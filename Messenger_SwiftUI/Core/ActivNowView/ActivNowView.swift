@@ -14,10 +14,8 @@ struct ActivNowView: View {
                 ForEach(0...10, id: \.self){ user in
                     VStack{
                         ZStack(alignment: .bottomTrailing){
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .frame(width: 64, height: 64)
-                                .foregroundColor(Color(.systemGray4))
+                            CircleProfileImageView(user: User.MOCK_USER,
+                                                   size: .medium)
                             ZStack{
                                 Circle()
                                     .fill(.white)

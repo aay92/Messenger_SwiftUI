@@ -8,21 +8,34 @@
 import SwiftUI
 
 struct InboxView: View {
+    
+    @State private var showNewMessageView = false
+    @State private var user = User.MOCK_USER
+
     var body: some View {
-        NavigationStack{
-            ScrollView{
+        NavigationStack {
+            ScrollView {
                 ActivNowView()
                 List{
                     ForEach(0...10 , id: \.self){message in
-                      InboxRowView()
+                        InboxRowView()
                     }
                 }.listStyle(PlainListStyle())
                     .frame(height: UIScreen.main.bounds.height - 120)
             }
+            .navigationDestination(for: User.self, destination: { user in
+                ViewProfile(user: user)
+            })
+            .fullScreenCover(isPresented: $showNewMessageView, content: {
+                NewMessageView()
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack{
-                        Image(systemName: "person.circle.fill")
+                        NavigationLink(value: user) {
+                            CircleProfileImageView(user: user, size: .xSmall)
+                        }
+                        
                         Text("Чаты")
                             .font(.title)
                             .fontWeight(.semibold)
@@ -31,17 +44,18 @@ struct InboxView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        print("tap")
-                    } label: {
-                        Image(systemName: "square.and.pencil.circle.fill")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .foregroundStyle(.black, Color(.systemGray5))
-                    }
-
+                        showNewMessageView.toggle()                    } label: {
+                            Image(systemName: "square.and.pencil.circle.fill")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .foregroundStyle(.black, Color(.systemGray5))
+                        }
+                    
                 }
             }
+            
         }
+
 
     }
 }
