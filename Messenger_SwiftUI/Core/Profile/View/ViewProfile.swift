@@ -51,7 +51,9 @@ struct ViewProfile: View {
             }
             
             Section {
-                Button("Выйти"){}
+                Button("Выйти"){
+                    AuthService.shared.signOut()
+                }
                 Button("Удалить учетную запись"){}
             }
             .foregroundColor(.red)
