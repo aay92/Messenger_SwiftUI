@@ -23,11 +23,5 @@ class InboxViewModel: ObservableObject {
         }.store(in: &cancellables)
 
     }
-    ////
-    ///onoinpanvapvwvvv
-    ///
-    ///voinanva
-    ///fmaonaoinao
-    ///
-    ///oifaoifnafna
+  
 }
