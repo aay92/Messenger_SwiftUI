@@ -42,8 +42,7 @@ struct loginView: View {
                 .padding()
                 ///forget password
                 Button {
-                    Task{ try await viewModel.login() }
-
+                         print("")
                 } label: {
                     Text("Забыли пароль")
                         .font(.footnote)
@@ -55,7 +54,7 @@ struct loginView: View {
     
                 ///login button
                 Button {
-                    print("")
+                    Task{ try await viewModel.login() }
                 } label: {
                     Text("Войти")
                 }

@@ -15,13 +15,18 @@ class AuthService {
     
     init(){
         self.userSession = Auth.auth().currentUser
-        print("\(userSession?.uid)")
+        print("\(String(describing: userSession?.uid))")
     }
     
     func login(with email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
+            result.user.uid
+            print("DEBUG: user \(result.user.uid)")
+
+            print("DEBUG: Failed to signOut user with email \(email) and password \(password)")
+
         } catch {
             print("DEBUG: Failed to signOut user with \(error.localizedDescription)")
 
@@ -46,4 +51,6 @@ class AuthService {
             print("DEBUG: signOut not successfull")
         }
     }
+    
+  
 }

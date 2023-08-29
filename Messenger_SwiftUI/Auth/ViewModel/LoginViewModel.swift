@@ -10,11 +10,11 @@ import SwiftUI
 class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
-    @Published var fullName = ""
+//    @Published var fullName = ""
 
     
     func login() async throws {
-        try await AuthService.shared.createUser(with: email, password: password, fullname: fullName)
+        try await AuthService.shared.login(with: email, password: password)
     }
 }
 
