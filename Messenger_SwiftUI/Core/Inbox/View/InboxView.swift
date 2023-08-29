@@ -10,7 +10,11 @@ import SwiftUI
 struct InboxView: View {
     
     @State private var showNewMessageView = false
-    @State private var user = User.MOCK_USER
+    @StateObject var viewModel = InboxViewModel()
+    
+    private var user: User? {
+        return viewModel.currentUser
+    }
 
     var body: some View {
         NavigationStack {
@@ -26,9 +30,12 @@ struct InboxView: View {
             .navigationDestination(for: User.self, destination: { user in
                 ViewProfile(user: user)
             })
-            .fullScreenCover(isPresented: $showNewMessageView, content: {
+            .sheet(isPresented: $showNewMessageView, content: {
                 NewMessageView()
             })
+//            .fullScreenCover(isPresented: $showNewMessageView, content: {
+//                NewMessageView()
+//            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack{
