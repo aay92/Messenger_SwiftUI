@@ -61,7 +61,9 @@ struct InboxView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        showNewMessageView.toggle()                    } label: {
+                        showNewMessageView.toggle()
+                        selectedUser = nil
+                    } label: {
                             Image(systemName: "square.and.pencil.circle.fill")
                                 .resizable()
                                 .frame(width: 32, height: 32)
