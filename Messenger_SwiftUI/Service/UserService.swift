@@ -30,4 +30,11 @@ class UserService {
         return users
     }
     
+    static func fetchUser(with uid: String, completion: @escaping (User)-> Void){
+        FirebaseConstants.userCollection.document(uid).getDocument { snapshot, _ in
+            guard let user = try? snapshot?.data(as: User.self) else { return }
+            completion(user)
+        }
+    }
+    
 }

@@ -29,4 +29,8 @@ struct Massage: Identifiable, Codable, Hashable {
     var isFromCurrentUser: Bool {
         return fromId == Auth.auth().currentUser?.uid 
     }
+    
+    var timestampString: String {
+        return timestamp.dateValue().timestampString() ///dateValue возващает дату
+    }
 }

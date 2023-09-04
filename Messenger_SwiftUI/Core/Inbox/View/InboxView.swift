@@ -20,17 +20,32 @@ struct InboxView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                ActivNowView()
+           
                 List{
-                    ForEach(0...10 , id: \.self){message in
-                        InboxRowView()
+                    ActivNowView()
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical)
+                        .padding(.horizontal, 4)
+                    ForEach(viewModel.recentMessages) { message in
+                        ZStack{
+                            NavigationLink(value: message) {
+                                EmptyView()
+                                    .opacity(0.0)///Чтобы стрелка исчезла
+                            }
+                            InboxRowView(message: message)
+                        }
+
                     }
                 }.listStyle(PlainListStyle())
                     .frame(height: UIScreen.main.bounds.height - 120)
-            }
-            .onChange(of: selectedUser, perform: { newValue in
+                .onChange(of: selectedUser, perform: { newValue in
                 showChat = newValue != nil
+            })
+            .navigationDestination(for: Massage.self, destination: { message in
+                if let user = message.user {
+                    ChatView(user: user)
+                }
             })
             .navigationDestination(for: User.self, destination: { user in
                 ViewProfile(user: user)
