@@ -19,6 +19,12 @@ struct User: Codable, Identifiable, Hashable {
     var id: String {
         return uid ?? NSUUID().uuidString
     }
+    ///firstName - получаем имя из fullName
+    var firstName: String {
+        let formatter = PersonNameComponentsFormatter()
+        let component = formatter.personNameComponents(from: fullName)
+        return component?.givenName ?? fullName
+    }
 
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B18ED522AA6F43E0064AD31 /* ActiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18ED512AA6F43E0064AD31 /* ActiveViewModel.swift */; };
+		5B18ED552AA6F8630064AD31 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18ED542AA6F8630064AD31 /* Route.swift */; };
 		5B8BB3642A95160800F2DF77 /* Messenger_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8BB3632A95160800F2DF77 /* Messenger_SwiftUIApp.swift */; };
 		5B8BB3662A95160800F2DF77 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8BB3652A95160800F2DF77 /* loginView.swift */; };
 		5B8BB3682A95160A00F2DF77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B8BB3672A95160A00F2DF77 /* Assets.xcassets */; };
@@ -47,6 +49,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B18ED512AA6F43E0064AD31 /* ActiveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveViewModel.swift; sourceTree = "<group>"; };
+		5B18ED542AA6F8630064AD31 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		5B8BB3602A95160800F2DF77 /* Messenger_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8BB3632A95160800F2DF77 /* Messenger_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messenger_SwiftUIApp.swift; sourceTree = "<group>"; };
 		5B8BB3652A95160800F2DF77 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B18ED4F2AA6F3C30064AD31 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5B8BB37F2A969BCE00F2DF77 /* ActivNowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B18ED502AA6F3CA0064AD31 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B18ED512AA6F43E0064AD31 /* ActiveViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5B18ED532AA6F84E0064AD31 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				5B18ED542AA6F8630064AD31 /* Route.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		5B8BB3572A95160800F2DF77 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +145,7 @@
 		5B8BB3622A95160800F2DF77 /* Messenger_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				5B18ED532AA6F84E0064AD31 /* Routing */,
 				5B8BB3CD2AA3135A00F2DF77 /* Utils */,
 				5B8BB3782A95170200F2DF77 /* App */,
 				5B8BB3732A95165800F2DF77 /* Auth */,
@@ -229,7 +258,8 @@
 		5B8BB37E2A969BB500F2DF77 /* ActivNowView */ = {
 			isa = PBXGroup;
 			children = (
-				5B8BB37F2A969BCE00F2DF77 /* ActivNowView.swift */,
+				5B18ED4F2AA6F3C30064AD31 /* Views */,
+				5B18ED502AA6F3CA0064AD31 /* ViewModel */,
 			);
 			path = ActivNowView;
 			sourceTree = "<group>";
@@ -502,6 +532,8 @@
 				5B8BB3CC2AA3120C00F2DF77 /* ChatService.swift in Sources */,
 				5B8BB3852A97655700F2DF77 /* NewMessageView.swift in Sources */,
 				5B8BB3962A991A5900F2DF77 /* ChatView.swift in Sources */,
+				5B18ED522AA6F43E0064AD31 /* ActiveViewModel.swift in Sources */,
+				5B18ED552AA6F8630064AD31 /* Route.swift in Sources */,
 				5B8BB37D2A96997600F2DF77 /* InboxView.swift in Sources */,
 				5B8BB3C02A9E34C200F2DF77 /* NewMessageViewModel.swift in Sources */,
 				5B8BB3B82A9E29E100F2DF77 /* UserService.swift in Sources */,

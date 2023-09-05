@@ -37,7 +37,10 @@ struct InboxView: View {
                         }
 
                     }
-                }.listStyle(PlainListStyle())
+                }
+                .navigationTitle("Чаты")
+                .navigationBarTitleDisplayMode(.inline)
+                .listStyle(PlainListStyle())
                     .frame(height: UIScreen.main.bounds.height - 120)
                 .onChange(of: selectedUser, perform: { newValue in
                 showChat = newValue != nil
@@ -47,8 +50,14 @@ struct InboxView: View {
                     ChatView(user: user)
                 }
             })
-            .navigationDestination(for: User.self, destination: { user in
-                ViewProfile(user: user)
+            .navigationDestination(for: Route.self, destination: { route in
+
+                switch route {
+                case .profile(let user):
+                    ViewProfile(user: user)
+                case .chatView(let user):
+                    ChatView(user: user)
+                }
             })
             .navigationDestination(isPresented: $showChat, destination: {
                 if let user = selectedUser {
@@ -64,8 +73,10 @@ struct InboxView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack{
-                        NavigationLink(value: user) {
-                            CircleProfileImageView(user: user, size: .xSmall)
+                        if let user = user {
+                            NavigationLink(value: Route.profile(user)) {
+                                CircleProfileImageView(user: user, size: .xSmall)
+                            }
                         }
                         
                         Text("Чаты")

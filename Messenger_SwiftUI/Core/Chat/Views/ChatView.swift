@@ -33,9 +33,11 @@ struct ChatView: View {
                 }
                 //message
 
-                ForEach(viewModel.messages) { message in
-                    ChatMassageCell(messages: message)
+                LazyVStack {///показывает только тогда когда необходимо
+                    ForEach(viewModel.messages) { message in
+                        ChatMassageCell(messages: message)
 
+                    }
                 }
                 //message input view
             }
@@ -58,6 +60,9 @@ struct ChatView: View {
             }
             .padding()
         }
+        
+        .navigationTitle(user.fullName)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
