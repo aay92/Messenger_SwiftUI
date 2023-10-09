@@ -8,23 +8,26 @@
 import SwiftUI
 
 struct InboxRowView: View {
+    
+    let message : Massage
+    
     var body: some View {
         HStack(alignment: .top, spacing: 12){
-            CircleProfileImageView(user: User.MOCK_USER,
+            CircleProfileImageView(user: message.user,
                                    size: .medium)
             
             VStack(alignment: .leading, spacing: 4){
-                Text("Петя Васильев")
+                Text(message.user?.fullName ?? "")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                Text("Тестовое сообщение")
+                Text(message.messageTaxt)
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .lineLimit(2)
                     .frame(maxWidth: UIScreen.main.bounds.width - 100, alignment: .leading)
             }
             HStack{
-                Text("Вчера")
+                Text(message.timestampString)
                 Image(systemName: "chevron.right")
             }
             .font(.footnote)
@@ -34,8 +37,8 @@ struct InboxRowView: View {
     }
 }
 
-struct InboxRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        InboxRowView()
-    }
-}
+//struct InboxRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InboxRowView()
+//    }
+//}

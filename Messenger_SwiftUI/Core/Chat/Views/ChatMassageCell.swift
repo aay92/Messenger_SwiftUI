@@ -9,13 +9,17 @@ import SwiftUI
 
 struct ChatMassageCell: View {
     
-    let isFromCurrentUser: Bool
+    let messages : Massage
+    
+    private var isFromCurrentUser: Bool {
+        return messages.isFromCurrentUser
+    }
     
     var body: some View {
         HStack{
             if isFromCurrentUser {
                 Spacer()
-                Text("test message")
+                Text(messages.messageTaxt)
                     .font(.subheadline)
                     .padding(12)
                     .background(Color(.systemBlue))
@@ -28,7 +32,7 @@ struct ChatMassageCell: View {
                 HStack(alignment: .bottom, spacing: 8){
                     CircleProfileImageView(user: User.MOCK_USER,
                                            size: .xxSmall)
-                    Text("test message")
+                    Text(messages.messageTaxt)
                         .font(.subheadline)
                         .padding()
                         .background(Color(.systemGray5))
@@ -47,8 +51,8 @@ struct ChatMassageCell: View {
     }
 }
 
-struct ChatMassageCell_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatMassageCell(isFromCurrentUser: false)
-    }
-}
+//struct ChatMassageCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatMassageCell(isFromCurrentUser: false)
+//    }
+//}

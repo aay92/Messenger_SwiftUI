@@ -6,12 +6,26 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct User: Codable, Identifiable, Hashable {
-    var id = NSUUID().uuidString
+    
+    @DocumentID var uid: String?///id из firestore
+    
     let fullName: String
     let email: String
     var profileImageUrl: String?
+    
+    var id: String {
+        return uid ?? NSUUID().uuidString
+    }
+    ///firstName - получаем имя из fullName
+    var firstName: String {
+        let formatter = PersonNameComponentsFormatter()
+        let component = formatter.personNameComponents(from: fullName)
+        return component?.givenName ?? fullName
+    }
+
 }
 
 extension User {
